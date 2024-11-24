@@ -1,17 +1,9 @@
-import itertools
+import sys
+from pathlib import Path
 
-def prime_sieve(end: int) -> list[int]:
-    sieve = [True] * end
-    sieve[0] = False
-    sieve[1] = False
-    for i in range(end):
-        if sieve[i]:
-            for factor in itertools.count(2):
-                number = factor * i
-                if number >= len(sieve):
-                    break
-                sieve[number] = False
-    primes = [number for number, state in enumerate(sieve) if state]
-    return primes
+# Add the parent directory to sys.path
+sys.path.append(str(Path(__file__).parent.parent))
+
+from CommonFunctions.sieve import prime_sieve
 
 print(sum(prime_sieve(2000000)))

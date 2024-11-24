@@ -1,3 +1,5 @@
+import itertools
+
 def prime_sieve(end: int) -> list[int]:
     sieve = [True] * end
     sieve[0] = False
